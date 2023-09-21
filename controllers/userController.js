@@ -5,7 +5,10 @@ module.exports = {
   //Get all Users
   async getAllUsers(req, res) {
     try {
-      const users = await User.find();
+      const users = await User.find().populate(
+        { path: "thoughts", select: "-__v" },
+        { path: "friends", select: "-__v" }
+      );
 
       res.json(users);
     } catch (err) {
@@ -19,7 +22,10 @@ module.exports = {
     try {
       const user = await User.findOne({
         _id: req.params.userId,
-      }).select("-__v");
+      }).populate(
+        { path: "thoughts", select: "-__v" },
+        { path: "friends", select: "-__v" }
+      );
 
       if (!user) {
         return res
@@ -89,6 +95,50 @@ module.exports = {
       res.json({
         message: "User successfully deleted",
       });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
+
+  //Add a new friend to a user's friend list
+  async addAFriend(req, res) {
+    try {
+      const user = await User.findByIdAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      );
+
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: "No user with that ID. Sorry :(" });
+      }
+
+      req.json(user);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
+
+  // Remove a friend from a user's friend list
+  async deleteAFriend(req, res) {
+    try {
+      const user = await User.findByIdAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      );
+
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: "No user with that ID. Sorry :(" });
+      }
+
+      req.json(user);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
