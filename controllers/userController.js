@@ -4,10 +4,9 @@ module.exports = {
   //Get all Users
   async getAllUsers(req, res) {
     try {
-      const users = await User.find().populate(
-        // { path: "thoughts", select: "-__v" },
-        { path: "friends", select: "-__v" }
-      );
+      const users = await User.find()
+        .populate({ path: "friends", select: "-__v" })
+        .populate({ path: "thoughts", select: "-__v" });
 
       res.json(users);
     } catch (err) {
@@ -21,10 +20,9 @@ module.exports = {
     try {
       const user = await User.findOne({
         _id: req.params.userId,
-      }).populate(
-        // { path: "thoughts", select: "-__v" },
-        { path: "friends", select: "-__v" }
-      );
+      })
+        .populate({ path: "friends", select: "-__v" })
+        .populate({ path: "thoughts", select: "-__v" });
 
       if (!user) {
         return res
