@@ -1,7 +1,7 @@
 const { ObjectId } = require("mongoose").Types;
 const { User, Thought } = require("../models");
 
-Module.exports = {
+module.exports = {
   //Get all Users
   async getAllUsers(req, res) {
     try {
