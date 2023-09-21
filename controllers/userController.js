@@ -6,7 +6,7 @@ module.exports = {
   async getAllUsers(req, res) {
     try {
       const users = await User.find().populate(
-        { path: "thoughts", select: "-__v" },
+        // { path: "thoughts", select: "-__v" },
         { path: "friends", select: "-__v" }
       );
 
@@ -23,7 +23,7 @@ module.exports = {
       const user = await User.findOne({
         _id: req.params.userId,
       }).populate(
-        { path: "thoughts", select: "-__v" },
+        // { path: "thoughts", select: "-__v" },
         { path: "friends", select: "-__v" }
       );
 
@@ -116,7 +116,7 @@ module.exports = {
           .json({ message: "No user with that ID. Sorry :(" });
       }
 
-      req.json(user);
+      res.json(user);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -138,7 +138,7 @@ module.exports = {
           .json({ message: "No user with that ID. Sorry :(" });
       }
 
-      req.json(user);
+      res.json(user);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
