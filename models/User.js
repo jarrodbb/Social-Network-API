@@ -46,10 +46,10 @@ userSchema.virtual("friendCount").get(function () {
   return `${this.friends.length}`;
 });
 
-userSchema.path("email").validate(async (email) => {
-  const emailCount = await mongoose.models.User.countDocuments({ email });
-  return !emailCount;
-}, "Email Already Exists");
+// userSchema.path("email").validate(async (email) => {
+//   const emailCount = await mongoose.models.User.countDocuments({ email });
+//   return !emailCount;
+// }, "Email Already Exists");
 
 const User = model("user", userSchema);
 
