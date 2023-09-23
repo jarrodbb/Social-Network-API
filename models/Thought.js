@@ -12,6 +12,20 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: (date) => {
+        if (date) {
+          const options = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            dayPeriod: "narrow",
+          };
+          return date.toLocaleDateString(undefined, options);
+        }
+      },
     },
     //use getter method for date formatting
     username: {

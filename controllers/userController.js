@@ -54,7 +54,9 @@ module.exports = {
         { _id: req.params.userId },
         { $set: req.body },
         { runValidators: true, new: true }
-      );
+      )
+        .populate({ path: "friends", select: "-__v" })
+        .populate({ path: "thoughts", select: "-__v" });
 
       if (!user) {
         return res.status(400).json({ message: "No User with that ID, Sorry" });
@@ -105,7 +107,9 @@ module.exports = {
         { _id: req.params.userId },
         { $addToSet: { friends: req.params.friendId } },
         { runValidators: true, new: true }
-      );
+      )
+        .populate({ path: "friends", select: "-__v" })
+        .populate({ path: "thoughts", select: "-__v" });
 
       if (!user) {
         return res

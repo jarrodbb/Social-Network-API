@@ -34,20 +34,29 @@ module.exports = {
 
   async createThought(req, res) {
     try {
+      const findUser = await User.findOne({
+        _id: req.body.userId,
+        username: req.body.username,
+      });
+      if (!findUser) {
+        return res.status(404).json({
+          message: "No user matching. Verified Username and ID required",
+        });
+      }
       const thought = await Thought.create(req.body);
-      const user = await User.findByIdAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: req.body.userId },
         { $addToSet: { thoughts: thought._id } },
-        { new: true }
+        { runValidators: true, new: true }
       );
 
       if (!user) {
-        return res.json(404).json({
+        return res.status(404).json({
           message: "Thought created, but no user with that ID",
         });
+      } else {
+        return res.json("Created Thought");
       }
-
-      res.json("Created Thought");
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -144,6 +153,15 @@ module.exports = {
   // Add A Reaction to a Thought
   async addAReaction(req, res) {
     try {
+      const findUser = await User.findOne({
+        username: req.body.username,
+      });
+      if (!findUser) {
+        return res.status(404).json({
+          message: "No user matching. Verified Username and ID required",
+        });
+      }
+
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
         { $addToSet: { reactions: req.body } },
