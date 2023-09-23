@@ -11,7 +11,7 @@
 
 This is an API for a Social Media Web Application where Users can share their thoughts and react with a friend's thoughts. The User is also given the ability to create a friends list where the friend can be added and removed from the list
 
-To achieve the desired results of the Social Media Web Applicaiton the following routes were developed,
+To achieve the desired results of the Social Media Web Application the following routes were developed,
 
 - Creating a new User
 - Getting all Users and their Thoughts
