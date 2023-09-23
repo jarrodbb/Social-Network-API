@@ -96,6 +96,8 @@ Include the username and email of the new user in the body
 }
 ```
 
+![Untitled_ Sep 23, 2023 4_47 PM](https://github.com/jarrodbb/Social-Network-API/assets/132813348/a93939b1-36ba-4ba7-9992-97457df53d38)
+
 ### Update a Single User by ID (Put request)
 
 /api/users/:userId
