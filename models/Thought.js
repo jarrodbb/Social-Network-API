@@ -6,8 +6,8 @@ const thoughtSchema = new Schema(
     thoughtText: {
       type: String,
       required: true,
-      min: [1, "Must be at least 1, got {VALUE}"],
-      max: [280, "Cannot be more than 280, got {VALUE}"],
+      minlength: [1, "Must be at least 1, got {VALUE}"],
+      maxlength: [280, "Cannot be more than 280, got {VALUE}"],
     },
     createdAt: {
       type: Date,
