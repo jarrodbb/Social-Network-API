@@ -21,7 +21,8 @@ const thoughtSchema = new Schema(
             day: "numeric",
             hour: "numeric",
             minute: "numeric",
-            dayPeriod: "narrow",
+            hour12: true,
+            
           };
           return date.toLocaleDateString(undefined, options);
         }

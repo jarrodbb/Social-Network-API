@@ -85,12 +85,6 @@ module.exports = {
         { new: true }
       );
 
-      if (!thought) {
-        return res.status(400).json({
-          message: "No thought could be found for this username",
-        });
-      }
-
       res.json({
         message: "User successfully deleted",
       });
