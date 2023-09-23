@@ -1,6 +1,10 @@
+//Require mongoose
 const { Schema, model } = require("mongoose");
+
+//Import reaction Schema
 const reactionSchema = require("./Reaction");
 
+//Define new schema for Thoughts
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -22,17 +26,16 @@ const thoughtSchema = new Schema(
             hour: "numeric",
             minute: "numeric",
             hour12: true,
-            
           };
           return date.toLocaleDateString(undefined, options);
         }
       },
     },
-    //use getter method for date formatting
     username: {
       type: String,
       required: true,
     },
+    // Reactions are an array of nested documents created with the reaction schema
     reactions: [reactionSchema],
   },
   {
@@ -44,10 +47,13 @@ const thoughtSchema = new Schema(
   }
 );
 
+//Virtual for counting Reactions
 thoughtSchema.virtual("reactionCount").get(function () {
   return `${this.reactions.length}`;
 });
 
+//Initialize Thought Model
 const Thought = model("thought", thoughtSchema);
 
+//Export Thought model
 module.exports = Thought;

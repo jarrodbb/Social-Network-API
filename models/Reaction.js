@@ -1,5 +1,7 @@
+//Require fro, mongoose
 const { Schema, Types } = require("mongoose");
 
+//Define new schema for Reactions
 const reactionSchema = new Schema(
   {
     reactionId: {

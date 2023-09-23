@@ -1,5 +1,7 @@
+// Require Mongoose
 const { Schema, model } = require("mongoose");
 
+//Define new schema for User
 const userSchema = new Schema(
   {
     username: {
@@ -10,6 +12,7 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
+      //Validation for email
       validate: {
         validator: function (v) {
           return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(v);
@@ -20,13 +23,14 @@ const userSchema = new Schema(
 
       unique: true,
     },
-
+    // Array of ID valus referencing Thought model
     thoughts: [
       {
         type: Schema.Types.ObjectId,
         ref: "thought",
       },
     ],
+    // Array of ID valus referencing User model
     friends: [
       {
         type: Schema.Types.ObjectId,
@@ -41,16 +45,13 @@ const userSchema = new Schema(
     id: false,
   }
 );
-
+//virtual to count the number of friends
 userSchema.virtual("friendCount").get(function () {
   return `${this.friends.length}`;
 });
 
-// userSchema.path("email").validate(async (email) => {
-//   const emailCount = await mongoose.models.User.countDocuments({ email });
-//   return !emailCount;
-// }, "Email Already Exists");
-
+//Initialize User Model
 const User = model("user", userSchema);
 
+//Export User Model
 module.exports = User;
