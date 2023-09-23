@@ -1,7 +1,7 @@
 //Controllers for Thoughts
 
 // Require User and Thought from models folder
-const { User, Thought } = require("../models");
+const { User, Thought } = require('../models');
 
 // Export controllers
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
       if (!thought) {
         return res
           .status(404)
-          .json({ message: "no thought with that ID, try again" });
+          .json({ message: 'no thought with that ID, try again' });
       }
 
       res.json(thought);
@@ -46,7 +46,7 @@ module.exports = {
       });
       if (!findUser) {
         return res.status(404).json({
-          message: "No user matching. Verified Username and ID required",
+          message: 'No user matching. Verified Username and ID required',
         });
       }
       //If User exists, create a thought
@@ -60,11 +60,11 @@ module.exports = {
 
       if (!user) {
         return res.status(404).json({
-          message: "Thought created, but no user with that ID",
+          message: 'Thought created, but no user with that ID',
         });
       } else {
         // Respond with new thought and message
-        return res.json({ thought, message: "Created Thought" });
+        return res.json({ thought, message: 'Created Thought' });
       }
     } catch (err) {
       // Catch error
@@ -93,12 +93,13 @@ module.exports = {
         if (!thought) {
           return res
             .status(404)
-            .json({ message: "No Thought with that ID :(" });
+            .json({ message: 'No Thought with that ID :(' });
         }
         // Send the updated Thought with a message
-        return res.json({ thought, messgae: "Thought updated" });
+        return res.json({ thought, messgae: 'Thought updated' });
       } else {
         //If the User updating the Thought is not the same First pull the thought from the original user
+        // eslint-disable-next-line no-unused-vars
         const userWithOldThought = await User.findOneAndUpdate(
           {
             thoughts: req.params.thoughtId,
@@ -120,15 +121,15 @@ module.exports = {
         );
         if (!user) {
           return res.json(404).json({
-            message: "Thought created, but no user with that ID",
+            message: 'Thought created, but no user with that ID',
           });
         }
         // Respond with Thought and message
-        res.json({ thought, message: "Created Thought" });
+        res.json({ thought, message: 'Created Thought' });
       }
 
       if (!thought) {
-        return res.status(404).json({ message: "No Thought with that ID :(" });
+        return res.status(404).json({ message: 'No Thought with that ID :(' });
       }
     } catch (err) {
       // Catch error
@@ -146,7 +147,7 @@ module.exports = {
       });
 
       if (!thought) {
-        return res.status(404).json({ message: "No Thought with this id!" });
+        return res.status(404).json({ message: 'No Thought with this id!' });
       }
       // Pull Thought from User
       const user = await User.findOneAndUpdate(
@@ -158,10 +159,10 @@ module.exports = {
       if (!user) {
         return res
           .status(404)
-          .json({ message: "Thought deleted but no user with this id!" });
+          .json({ message: 'Thought deleted but no user with this id!' });
       }
       //Respond with message
-      res.json({ message: "Thought successfully deleted!" });
+      res.json({ message: 'Thought successfully deleted!' });
     } catch (err) {
       // Catch error
       console.log(err);
@@ -179,7 +180,7 @@ module.exports = {
       //If no User, return
       if (!findUser) {
         return res.status(404).json({
-          message: "No user matching. Verified Username and ID required",
+          message: 'No user matching. Verified Username and ID required',
         });
       }
       // Add Reaction to Thought
@@ -190,7 +191,7 @@ module.exports = {
       );
       //If no Thought, return
       if (!thought) {
-        return res.status(404).json({ message: "No Thought with this id! :(" });
+        return res.status(404).json({ message: 'No Thought with this id! :(' });
       }
       // Respond with Thought
       res.json(thought);
@@ -212,10 +213,10 @@ module.exports = {
       );
       //If no Thought, return
       if (!thought) {
-        return res.status(404).json({ message: "No Thought with this id!" });
+        return res.status(404).json({ message: 'No Thought with this id!' });
       }
       //Respond with Thought and message
-      res.json({ thought, message: "Deleted Reaction!" });
+      res.json({ thought, message: 'Deleted Reaction!' });
     } catch (err) {
       // Catch error
       console.log(err);

@@ -6,13 +6,18 @@
   "license": "MIT",
   "scripts": {
     "start": "node index",
-    "dev": "nodemon index"
+    "dev": "nodemon index",
+    "lint": "npx eslint **/*.js"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^7.0.2"
+    "mongoose": "^7.0.2",
+    "eslint": "^7.12.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.9"
+    "nodemon": "^2.0.9",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "prettier": "^2.1.2"
   }
 }

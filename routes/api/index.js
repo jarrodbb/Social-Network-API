@@ -1,14 +1,14 @@
 //Require express
-const router = require("express").Router();
+const router = require('express').Router();
 //Import user routes
-const userRoutes = require("./userRoutes");
+const userRoutes = require('./userRoutes');
 //Import thought routes
-const thoughtRoutes = require("./thoughtRoutes");
+const thoughtRoutes = require('./thoughtRoutes');
 
 //User routes use /users
-router.use("/users", userRoutes);
+router.use('/users', userRoutes);
 //Thought routes use /thoughts
-router.use("/thoughts", thoughtRoutes);
+router.use('/thoughts', thoughtRoutes);
 
 //Export router
 module.exports = router;

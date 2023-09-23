@@ -1,5 +1,5 @@
 // Require Mongoose
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 //Define new schema for User
 const userSchema = new Schema(
@@ -15,11 +15,12 @@ const userSchema = new Schema(
       //Validation for email
       validate: {
         validator: function (v) {
+          // eslint-disable-next-line no-useless-escape
           return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(v);
         },
         message: (props) => `${props.value} is not a valid email`,
       },
-      required: [true, "User email required"],
+      required: [true, 'User email required'],
 
       unique: true,
     },
@@ -27,14 +28,14 @@ const userSchema = new Schema(
     thoughts: [
       {
         type: Schema.Types.ObjectId,
-        ref: "thought",
+        ref: 'thought',
       },
     ],
     // Array of ID valus referencing User model
     friends: [
       {
         type: Schema.Types.ObjectId,
-        ref: "user",
+        ref: 'user',
       },
     ],
   },
@@ -46,12 +47,12 @@ const userSchema = new Schema(
   }
 );
 //virtual to count the number of friends
-userSchema.virtual("friendCount").get(function () {
+userSchema.virtual('friendCount').get(function () {
   return `${this.friends.length}`;
 });
 
 //Initialize User Model
-const User = model("user", userSchema);
+const User = model('user', userSchema);
 
 //Export User Model
 module.exports = User;

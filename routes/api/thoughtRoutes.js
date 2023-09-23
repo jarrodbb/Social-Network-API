@@ -1,5 +1,5 @@
 //Require express
-const router = require("express").Router();
+const router = require('express').Router();
 
 //Import from controllers
 const {
@@ -10,23 +10,23 @@ const {
   deleteThought,
   addAReaction,
   removeAReaction,
-} = require("../../controllers/thoughtControllers");
+} = require('../../controllers/thoughtControllers');
 
 //Define routes
-router.route("/").get(getThoughts).post(createThought);
+router.route('/').get(getThoughts).post(createThought);
 
 //Define routes
 router
-  .route("/:thoughtId")
+  .route('/:thoughtId')
   .get(getSingleThought)
   .put(updateThought)
   .delete(deleteThought);
 
 //Define routes
-router.route("/:thoughtId/reactions").post(addAReaction);
+router.route('/:thoughtId/reactions').post(addAReaction);
 
 //Define routes
-router.route("/:thoughtId/reactions/:reactionId").delete(removeAReaction);
+router.route('/:thoughtId/reactions/:reactionId').delete(removeAReaction);
 
 //Export
 module.exports = router;

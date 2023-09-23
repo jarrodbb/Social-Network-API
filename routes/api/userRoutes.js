@@ -1,5 +1,5 @@
 //Require express
-const router = require("express").Router();
+const router = require('express').Router();
 
 //Import from controllers
 const {
@@ -10,17 +10,17 @@ const {
   deleteUser,
   addAFriend,
   deleteAFriend,
-} = require("../../controllers/userController");
+} = require('../../controllers/userController');
 
 //Define routes
-router.route("/").get(getAllUsers).post(createUser);
+router.route('/').get(getAllUsers).post(createUser);
 
 //Define routes
-router.route("/:userId").get(getSingleUser).put(updateUser).delete(deleteUser);
+router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
 
 //Define routes
 router
-  .route("/:userId/friends/:friendId")
+  .route('/:userId/friends/:friendId')
   .post(addAFriend)
   .delete(deleteAFriend);
 

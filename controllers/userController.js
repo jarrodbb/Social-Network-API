@@ -1,7 +1,7 @@
 //Controllers for User
 
 // Require User and Thought from models folder
-const { User, Thought } = require("../models");
+const { User, Thought } = require('../models');
 
 //Export Controllers
 module.exports = {
@@ -11,8 +11,8 @@ module.exports = {
       //Find all Users
       const users = await User.find()
         //Populate Friends and Thoughts
-        .populate({ path: "friends", select: "-__v" })
-        .populate({ path: "thoughts", select: "-__v" });
+        .populate({ path: 'friends', select: '-__v' })
+        .populate({ path: 'thoughts', select: '-__v' });
       //Respond with Users
       res.json(users);
     } catch (err) {
@@ -30,14 +30,14 @@ module.exports = {
         _id: req.params.userId,
       })
         //Populate Friends and Thoughts
-        .populate({ path: "friends", select: "-__v" })
-        .populate({ path: "thoughts", select: "-__v" });
+        .populate({ path: 'friends', select: '-__v' })
+        .populate({ path: 'thoughts', select: '-__v' });
 
       //If no user, return
       if (!user) {
         return res
           .status(404)
-          .json({ message: "no user with that ID, try again" });
+          .json({ message: 'no user with that ID, try again' });
       }
       //Respond with User
       res.json(user);
@@ -53,7 +53,7 @@ module.exports = {
     try {
       const user = await User.create(req.body);
       //Respond with User
-      res.json({ user, message: "User Created" });
+      res.json({ user, message: 'User Created' });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -69,14 +69,14 @@ module.exports = {
         { runValidators: true, new: true }
       )
         //Populate Friends and Thoughts
-        .populate({ path: "friends", select: "-__v" })
-        .populate({ path: "thoughts", select: "-__v" });
+        .populate({ path: 'friends', select: '-__v' })
+        .populate({ path: 'thoughts', select: '-__v' });
       //If no User, return
       if (!user) {
-        return res.status(400).json({ message: "No User with that ID, Sorry" });
+        return res.status(400).json({ message: 'No User with that ID, Sorry' });
       }
       //Respond with User
-      res.json({ user, message: "User Updated" });
+      res.json({ user, message: 'User Updated' });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -92,16 +92,17 @@ module.exports = {
       });
 
       if (!user) {
-        return res.status(404).json({ message: "No User with that ID, Sorry" });
+        return res.status(404).json({ message: 'No User with that ID, Sorry' });
       }
       //Remove all Thoughts by User
+      // eslint-disable-next-line no-unused-vars
       const thought = await Thought.deleteMany(
         { username: user.username },
         { new: true }
       );
       //Respond with message
       res.json({
-        message: "User successfully deleted",
+        message: 'User successfully deleted',
       });
     } catch (err) {
       //Catch error
@@ -120,16 +121,16 @@ module.exports = {
         { runValidators: true, new: true }
       )
         //Populate Friends and Thoughts
-        .populate({ path: "friends", select: "-__v" })
-        .populate({ path: "thoughts", select: "-__v" });
+        .populate({ path: 'friends', select: '-__v' })
+        .populate({ path: 'thoughts', select: '-__v' });
 
       if (!user) {
         return res
           .status(404)
-          .json({ message: "No user with that ID. Sorry :(" });
+          .json({ message: 'No user with that ID. Sorry :(' });
       }
 
-      res.json({ user, message: "You're popular. Friend added" });
+      res.json({ user, message: 'You\'re popular. Friend added' });
     } catch (err) {
       //Catch error
       console.log(err);
@@ -147,16 +148,16 @@ module.exports = {
         { runValidators: true, new: true }
       )
         //Populate Friends and Thoughts
-        .populate({ path: "friends", select: "-__v" })
-        .populate({ path: "thoughts", select: "-__v" });
+        .populate({ path: 'friends', select: '-__v' })
+        .populate({ path: 'thoughts', select: '-__v' });
       //If no User, Return
       if (!user) {
         return res
           .status(404)
-          .json({ message: "No user with that ID. Sorry :(" });
+          .json({ message: 'No user with that ID. Sorry :(' });
       }
       //Respond with User and message
-      res.json({ user, message: "That's sad. Friend deleted" });
+      res.json({ user, message: 'That\'s sad. Friend deleted' });
     } catch (err) {
       //Catch error
       console.log(err);

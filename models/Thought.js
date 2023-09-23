@@ -1,8 +1,8 @@
 //Require mongoose
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 //Import reaction Schema
-const reactionSchema = require("./Reaction");
+const reactionSchema = require('./Reaction');
 
 //Define new schema for Thoughts
 const thoughtSchema = new Schema(
@@ -10,8 +10,8 @@ const thoughtSchema = new Schema(
     thoughtText: {
       type: String,
       required: true,
-      minlength: [1, "Must be at least 1, got {VALUE}"],
-      maxlength: [280, "Cannot be more than 280, got {VALUE}"],
+      minlength: [1, 'Must be at least 1, got {VALUE}'],
+      maxlength: [280, 'Cannot be more than 280, got {VALUE}'],
     },
     createdAt: {
       type: Date,
@@ -19,12 +19,12 @@ const thoughtSchema = new Schema(
       get: (date) => {
         if (date) {
           const options = {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
             hour12: true,
           };
           return date.toLocaleDateString(undefined, options);
@@ -48,12 +48,12 @@ const thoughtSchema = new Schema(
 );
 
 //Virtual for counting Reactions
-thoughtSchema.virtual("reactionCount").get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
   return `${this.reactions.length}`;
 });
 
 //Initialize Thought Model
-const Thought = model("thought", thoughtSchema);
+const Thought = model('thought', thoughtSchema);
 
 //Export Thought model
 module.exports = Thought;
