@@ -11,22 +11,23 @@
 
 This is an API for a Social Media Web Application where Users can share their thoughts and react with a friend's thoughts. The User is also given the ability to create a friends list where the friend can be added and removed from the list
 
-To achieve the desired results of the Social Media Web Applicaiton the following functionalities were developed,
+To achieve the desired results of the Social Media Web Applicaiton the following routes were developed,
 
 - Creating a new User
-- Updating a User
-- Removing a User
-- Adding a Friend
+- Getting all Users and their Thoughts
+- Getting a Single User and their Thoughts
+- Updating a User by their _id
+- Removing a User by their _id
+- Adding a Friend 
 - Removing a Friend
+- Getting all Thoughts
+- Getting a single Thought by its _id
 - Creating a Thought
-- Updating a Thought
-- Removing a Thought
+- Updating a Thought by its _id
+- Removing a Thought by it _id
 - Creating a Reaction
 - Removing a Reaction
-- Getting all Users
-- Getting a Single User
-- Getting all Thought
-- Getting a single Thought
+
 
 For the this Web Application, express.js was utilised along with MongoDB database and the Mongoose ODM.
 
@@ -121,7 +122,7 @@ Include the username and email of the new user in the body
 
 ![Screenshot 2023-09-23 at 4 56 28 pm](https://github.com/jarrodbb/Social-Network-API/assets/132813348/c8b28ff6-c4c1-4adb-b77b-b73d4491d972)
 
-### Update a Single User by ID (Put request)
+### Update a Single User by _id (Put request)
 
 /api/users/:userId
 
@@ -136,7 +137,7 @@ Include the username and email of the new user in the body
 
 ![Screenshot 2023-09-23 at 5 00 17 pm](https://github.com/jarrodbb/Social-Network-API/assets/132813348/166c4356-7d75-43c4-bd4c-69adfe8ea7b6)
 
-### Remove a Single User by ID (Delete request)
+### Remove a Single User by _id (Delete request)
 
 /api/users/:userId
 
@@ -164,7 +165,7 @@ A User's associated thoughts are removed when the user is removed
 
 ![Screenshot 2023-09-23 at 5 08 31 pm](https://github.com/jarrodbb/Social-Network-API/assets/132813348/a0134be1-5b36-4dc4-8675-d60cf2120e0a)
 
-### Get a Single Thought by ID (Get request)
+### Get a Single Thought by _id (Get request)
 
 /api/thoughts
 
@@ -188,7 +189,7 @@ When a thought is created, its ID is pushed into the associated user's thoughts 
 
 ![Screenshot 2023-09-23 at 5 04 40 pm](https://github.com/jarrodbb/Social-Network-API/assets/132813348/73d75129-e701-4d91-bdd3-7b12a19d1bc4)
 
-### Update a Thought by ID (Put request)
+### Update a Thought by _id (Put request)
 
 /api/thoughts/:thoughtId
 
@@ -204,7 +205,7 @@ Include the thoughtText, username and userId in the body
 
 ![Screenshot 2023-09-23 at 5 10 43 pm](https://github.com/jarrodbb/Social-Network-API/assets/132813348/635b5dc3-cb1a-4b22-a5cf-de7e25c32b60)
 
-### Remove a Thought by ID (Delete request)
+### Remove a Thought by _id (Delete request)
 
 /api/thoughts/:thoughtId
 
