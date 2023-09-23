@@ -1,7 +1,5 @@
 # Social-Network-API
 
-API for Social Media Web Application
-
 ## Description
 
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
@@ -10,6 +8,27 @@ API for Social Media Web Application
 ![eslint](https://img.shields.io/badge/eslint-v7.12.1-lightgrey)
 ![nodemon](https://img.shields.io/badge/nodemon-3.0.1-black)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+
+This is an API for a Social Media Web Application where Users can share their thoughts and react with a friend's thoughts. The User is also given the ability to create a friends list where the friend can be added and removed from the list
+
+To achieve the desired results of the Social Media Web Applicaiton the following functionalities were developed,
+
+- Creating a new User
+- Updating a User
+- Removing a User
+- Adding a Friend
+- Removing a Friend
+- Creating a Thought
+- Updating a Thought
+- Removing a Thought
+- Creating a Reaction
+- Removing a Reaction
+- Getting all Users
+- Getting a Single User
+- Getting all Thought
+- Getting a single Thought
+
+For the this Web Application, express.js was utilised along with MongoDB database and the Mongoose ODM.
 
 ### Demo
 
