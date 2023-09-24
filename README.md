@@ -92,7 +92,7 @@ If there is no package.json install one by running npm init
 
 ## Open Insomnia
 
-When the application is running on localhost:3001 open Insomnia to check the backend
+When the application is running on localhost:3001 open Insomnia 
 
 ## Users
 
