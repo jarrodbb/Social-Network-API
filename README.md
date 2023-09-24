@@ -37,7 +37,7 @@ For the this Web Application, express.js was utilised along with MongoDB databas
 
 [YouTube](https://youtu.be/4ZFP6V7mNww)
 
-[Mp4]
+[Mp4](https://github.com/jarrodbb/Social-Network-API/tree/main/assets/demo)
 
 
 ## Table of Contents
